@@ -4,15 +4,11 @@ services:
   web:
     build: .
     volumes:
-      - type: bind
-        source: .
-        target: /app
+      - ./src:/app
     ports:
       - '4000:4000'
     depends_on:
       - db
-    command:
-      - ./run.sh
 
   db:
     image: postgres

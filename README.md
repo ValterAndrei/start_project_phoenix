@@ -1,17 +1,21 @@
-## Configure your environment
+1. Configure your environment
 
 ```
-$ chmod +x run.sh
 $ docker-compose build
 ```
 
-## Create the project
+2. Create the project
 
 ```
 $ docker-compose run --rm web mix phx.new .
 ```
 
-## Configure your database DEV and TEST
+3. Change file permission
+```
+$ sudo chown -R $USER:$USER .
+```
+
+4. Configure your database DEV and TEST
 
 ```
 config :app, App.Repo,
@@ -33,17 +37,19 @@ config :app, App.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 ```
 
-## Run the application
+5. Run the application
 
 ```
+$ cd src
 $ docker-compose up web
 ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 
-## CRUD example
+6. CRUD example
 
 ```
+$ docker-compose run --web bash
 > mix phx.gen.html Accounts User users name:string username:string:unique
 ```
