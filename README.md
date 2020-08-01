@@ -37,19 +37,23 @@ config :app, App.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 ```
 
-5. Run the application
+5. Create database
+```
+$ docker-compose run --rm web mix ecto.create
+```
+
+6. Run the application
 
 ```
-$ cd src
 $ docker-compose up web
 ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 
-6. CRUD example
+7. CRUD example
 
 ```
-$ docker-compose run --web bash
+$ docker-compose run --rm web bash
 > mix phx.gen.html Accounts User users name:string username:string:unique
 ```
